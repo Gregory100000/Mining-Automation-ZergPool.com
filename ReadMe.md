@@ -1,10 +1,10 @@
-#**ZergPool Mining Stats**
+# **ZergPool Mining Stats**
 
-###**Summary**
+### **Summary**
 Download ZergPool shared pool statistics into a PostgreSQL database. Various SQL queries can then be utilized
 to aid in mining automation or predictions.
 
-###**Description**
+### **Description**
 ZergPool provides several useful statistics for every pool they host. This allows a miner to calculate projections
 and possible profit opportunities. However, to properly calculate these projections, information about the current
 Bitcoin price is mandatory. Therefore, information must be obtained from ZergPool and another site, in this case
@@ -25,7 +25,7 @@ In short, the zerg.go program will do the following:
 NOTE: Number 3 above has the unique benefit also of aiding in the identification of newly created coins on a day
 to day basis.
 
-###**How to Use**
+### **How to Use**
 
 1. Install Go
 2. Clone the repository
@@ -41,6 +41,6 @@ NOTE: If you see a bunch of "record not found" errors onscreen, please ignore th
 any obvious way to suppress them, and this program verifies that certain records (i.e. especially coins) do not
 exist before adding them to the database. The errors require no action.
 
-###**Included Reports**
+### **Included Reports**
 In the sql folder is a SQL report that can be used to see the latest pool statistics for each pool and the potential
 profit estimates/actuals in dollars. Additional reports may be added down the road.
