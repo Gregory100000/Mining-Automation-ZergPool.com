@@ -22,4 +22,4 @@ INNER JOIN (
 	GROUP BY pool_id
 ) latest_stats ON
 	latest_stats.id = pool_stats.id
-ORDER BY pools.name
+ORDER BY pools.name;
