@@ -43,4 +43,5 @@ exist before adding them to the database. The errors require no action.
 
 ### **Included Reports**
 In the sql folder is a SQL report that can be used to see the latest pool statistics for each pool and the potential
-profit estimates/actuals in dollars. Additional reports may be added down the road.
+profit estimates/actuals in dollars. There is also a report to see any new coins added from CoinGecko in the last 24 hours. 
+That may be useful in spotting opportunities with new projects. Additional reports may be added down the road.
