@@ -1,5 +1,9 @@
 package main
 
+// Pull down pool statistics from Zergpool's REST and store into a database, creating schema as necessary.
+// ZergPoolConfig.hcl controls the configuration for this program. Important settings such as database
+// connectivity etc. are stored there.
+
 import (
 	"encoding/json"
 	"errors"
@@ -12,10 +16,10 @@ import (
 	"time"
 
 	"github.com/hashicorp/hcl/v2/hclsimple"
-	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 
-	"ZergPoolData/models"
+	"github.com/GregoryUnderscore/Mining-Automation-Shared/database"
+	. "github.com/GregoryUnderscore/Mining-Automation-Shared/models"
 )
 
 // ====================================
@@ -97,31 +101,10 @@ func main() {
 		log.Fatalf("Failed to load config file "+configFileName+".\n", err)
 	}
 
-	log.Println("Using the following configuration:")
-	log.Println("Database Server: " + config.Host + ":" + config.Port)
-	log.Println("Database: " + config.Database)
-	log.Println("User: " + config.User + "\n")
-
-	dsn := "host=" + config.Host + " "
-	dsn += "port=" + config.Port + " "
-	dsn += "dbname=" + config.Database + " "
-	dsn += "user=" + config.User + " "
-	dsn += "password=" + config.Password + " "
-	dsn += "TimeZone=" + config.TimeZone + " "
-	dsn += "sslmode=disable"
-	log.Println("Connecting to " + config.Host + "...")
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-
-	if err != nil {
-		log.Fatalf("Failed to connect to the database server.\n", err)
-	}
-
-	log.Println("Connected to " + config.Host + ".")
-	log.Println("Verifying/updating schema")
-	// Create the schema if it does not exist.
-	db.AutoMigrate(&models.Provider{}, &models.Algorithm{}, &models.Pool{}, &models.PoolStats{},
-		&models.Coin{}, &models.CoinPrice{})
-	log.Println("Schema verified.")
+	// Connect to the database and create/validate the schema.
+	db := database.Connect(config.Host, config.Port, config.Database, config.User, config.Password,
+		config.TimeZone)
+	database.VerifyAndUpdateSchema(db)
 
 	// Open the new database transaction and get all the coins from CoinGecko along with the BTC price.
 	tx := db.Begin()
@@ -139,7 +122,7 @@ func main() {
 	}()
 
 	// Check if the ZergPool provider record exists, and if not create it.
-	var provider models.Provider
+	var provider Provider
 	result := tx.Where("name = ?", "ZergPool").First(&provider)
 	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
 		provider.Name = "ZergPool"
@@ -159,7 +142,7 @@ func main() {
 	for _, stat := range stats {
 
 		// ==> Algorithm
-		var algo models.Algorithm
+		var algo Algorithm
 		result := tx.Where("name = ?", stat.Name).First(&algo)
 		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
 			algo.Name = stat.Name
@@ -172,7 +155,7 @@ func main() {
 		}
 
 		// ==> Pool
-		var pool models.Pool
+		var pool Pool
 		result = tx.Where("provider_id = ? AND algorithm_id=?", provider.ID, algo.ID).First(&pool)
 		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
 			// Generate the URL
@@ -192,7 +175,7 @@ func main() {
 		}
 
 		// ==> Stats
-		poolStat := models.PoolStats{
+		poolStat := PoolStats{
 			PoolID:              pool.ID,
 			Instant:             time.Now(),
 			CurrentHashrate:     uint64(stat.HashrateShared),
@@ -295,7 +278,7 @@ func getCoinsAndBTCPrice(url string, tx *gorm.DB) uint64 {
 
 	// Cycle over the coins from CoinGecko and store anything not in the database.
 	for _, coin := range coins {
-		var coinToStore models.Coin
+		var coinToStore Coin
 		result := tx.Where("coin_gecko_id = ?", coin.CoinGeckoID).First(&coinToStore)
 		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
 			coinToStore.CoinGeckoID = coin.CoinGeckoID
@@ -332,13 +315,13 @@ func getCoinsAndBTCPrice(url string, tx *gorm.DB) uint64 {
 	log.Println("Bitcoin Price (USD): " + strconv.FormatFloat(price, 'f', 2, 64))
 
 	// Get Bitcoin's ID in the database.
-	var bitcoin models.Coin
+	var bitcoin Coin
 	result := tx.Where("coin_gecko_id = ?", "bitcoin").First(&bitcoin)
 	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
 		log.Fatalf("Issue locating Bitcoin in the database.\n", result.Error)
 	}
 	// Store the price for Bitcoin.
-	var priceToStore models.CoinPrice
+	var priceToStore CoinPrice
 	priceToStore.Price = price
 	priceToStore.CoinID = bitcoin.ID
 	priceToStore.Instant = time.Now()

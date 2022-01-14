@@ -3,12 +3,13 @@ module ZergPoolData
 go 1.17
 
 require (
+	github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220114072232-8b44d8489cb3
 	github.com/hashicorp/hcl/v2 v2.11.1
-	gorm.io/driver/postgres v1.2.3
-	gorm.io/gorm v1.22.4
+	gorm.io/gorm v1.22.5
 )
 
 require (
+	github.com/GregoryUnderscore/Mining-Automation-Shared v0.0.0-20220114064519-e59302a30d86 // indirect
 	github.com/agext/levenshtein v1.2.1 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/google/go-cmp v0.3.1 // indirect
@@ -21,9 +22,10 @@ require (
 	github.com/jackc/pgtype v1.9.0 // indirect
 	github.com/jackc/pgx/v4 v4.14.0 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
-	github.com/jinzhu/now v1.1.3 // indirect
+	github.com/jinzhu/now v1.1.4 // indirect
 	github.com/mitchellh/go-wordwrap v0.0.0-20150314170334-ad45545899c7 // indirect
 	github.com/zclconf/go-cty v1.8.0 // indirect
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
 	golang.org/x/text v0.3.7 // indirect
+	gorm.io/driver/postgres v1.2.3 // indirect
 )

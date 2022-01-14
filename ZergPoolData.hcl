@@ -1,8 +1,8 @@
 host="localhost"
 port="5432"
-database="mining"  // NOTE: This database must be created manually!
+database="mining"
 user="postgres"
-password="whateves"
+password="Delta434"
 timezone="America/Chicago"
-zergregion="na"  // The ZergPool region calculated from their URL generator.
+zergregion="na"
 zergbaseurl="mine.zergpool.com"
