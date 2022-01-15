@@ -4,12 +4,12 @@ go 1.17
 
 require (
 	github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220114072232-8b44d8489cb3
+	github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220114072232-8b44d8489cb3
 	github.com/hashicorp/hcl/v2 v2.11.1
 	gorm.io/gorm v1.22.5
 )
 
 require (
-	github.com/GregoryUnderscore/Mining-Automation-Shared v0.0.0-20220114064519-e59302a30d86 // indirect
 	github.com/agext/levenshtein v1.2.1 // indirect
 	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/google/go-cmp v0.3.1 // indirect
