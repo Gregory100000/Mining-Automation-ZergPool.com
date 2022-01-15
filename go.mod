@@ -3,8 +3,8 @@ module ZergPoolData
 go 1.17
 
 require (
-	github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220114072232-8b44d8489cb3
-	github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220114072232-8b44d8489cb3
+	github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220115114059-c47d8d47e661
+	github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220115114059-c47d8d47e661
 	github.com/hashicorp/hcl/v2 v2.11.1
 	gorm.io/gorm v1.22.5
 )
