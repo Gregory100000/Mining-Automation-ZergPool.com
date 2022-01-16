@@ -37,10 +37,6 @@ to day basis.
 Step 6 can be automated on Linux based operating systems by using crontab. On Windows, the task scheduler can 
 be used.
 
-NOTE: If you see a bunch of "record not found" errors onscreen, please ignore those. GORM outputs those without 
-any obvious way to suppress them, and this program verifies that certain records (i.e. especially coins) do not
-exist before adding them to the database. The errors require no action.
-
 ### **Included Reports**
 In the sql folder is a SQL report that can be used to see the latest pool statistics for each pool and the potential
 profit estimates/actuals in dollars. There is also a report to see any new coins added from CoinGecko in the last 24 hours. 
