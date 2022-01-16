@@ -123,8 +123,8 @@ func main() {
 
 	// Check if the ZergPool provider record exists, and if not create it.
 	var provider Provider
-	result := tx.Where("name = ?", "ZergPool").First(&provider)
-	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+	result := tx.Where("name = ?", "ZergPool").Limit(1).Find(&provider)
+	if result.RowsAffected == 0 {
 		provider.Name = "ZergPool"
 		provider.Website = "https://zergpool.com/"
 		provider.Fee = 0.5
@@ -143,8 +143,8 @@ func main() {
 
 		// ==> Algorithm
 		var algo Algorithm
-		result := tx.Where("name = ?", stat.Name).First(&algo)
-		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+		result := tx.Where("name = ?", stat.Name).Limit(1).Find(&algo)
+		if result.RowsAffected == 0 {
 			algo.Name = stat.Name
 			result = tx.Create(&algo)
 			if result.Error != nil {
@@ -156,8 +156,9 @@ func main() {
 
 		// ==> Pool
 		var pool Pool
-		result = tx.Where("provider_id = ? AND algorithm_id=?", provider.ID, algo.ID).First(&pool)
-		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+		result = tx.Where("provider_id = ? AND algorithm_id=?", provider.ID, algo.ID).
+			Limit(1).Find(&pool)
+		if result.RowsAffected == 0 {
 			// Generate the URL
 			url := stat.Name + "." + config.ZergRegion + "." + config.ZergBaseURL
 			pool.ProviderID = provider.ID
@@ -279,8 +280,8 @@ func getCoinsAndBTCPrice(url string, tx *gorm.DB) uint64 {
 	// Cycle over the coins from CoinGecko and store anything not in the database.
 	for _, coin := range coins {
 		var coinToStore Coin
-		result := tx.Where("coin_gecko_id = ?", coin.CoinGeckoID).First(&coinToStore)
-		if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+		result := tx.Where("coin_gecko_id = ?", coin.CoinGeckoID).Limit(1).Find(&coinToStore)
+		if result.RowsAffected == 0 {
 			coinToStore.CoinGeckoID = coin.CoinGeckoID
 			coinToStore.Name = coin.Name
 			coinToStore.Symbol = coin.Symbol
