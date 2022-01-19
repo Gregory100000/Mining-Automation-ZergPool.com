@@ -9,8 +9,8 @@ SELECT pools.name,pool_stats.instant,current_hashrate,workers, profit_estimate*1
 		WHEN mh_factor = 1 THEN 'mBTC/Mh/day'
 		WHEN mh_factor = 0.001 THEN 'mBTC/Kh/day'
 	END AS hash_unit,
-	price*0.001*profit_estimate AS profit_dollar_estimate,  -- The $ estimate per hash unit / day
-	price*0.001*profit_actual24_hours AS profit__dollar_actual24_hours -- The $ actual per hash unit / last day
+	price*profit_estimate AS profit_dollar_estimate,  -- The $ estimate per hash unit / day
+	price*0.001*profit_actual24_hours AS profit_dollar_actual24_hours -- The $ actual per hash unit / last day
 FROM pool_stats
 LEFT JOIN pools ON
 	pool_id = pools.id 

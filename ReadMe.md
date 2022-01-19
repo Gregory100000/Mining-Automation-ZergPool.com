@@ -10,12 +10,12 @@ and possible profit opportunities. However, to properly calculate these projecti
 Bitcoin price is mandatory. Therefore, information must be obtained from ZergPool and another site, in this case
 CoinGecko, to properly make predictions.
 
-The aim of this repository is to create several utilities to maneuver ZergPool mining closer to autonomy. The
-first phase is to pull down the statistics into a database that can be easily queried by optimization clients
-(not yet developed). The statistics can also be used to calculate predictions based on historical data which is
-currently unavailable from ZergPool directly.
+The aim of this repository is to maneuver ZergPool mining closer to autonomy. This pulls down the statistics into a database that can be easily queried by optimization clients (clients not yet developed). The statistics can also be used to calculate predictions based on historical data which is currently unavailable from ZergPool directly.
 
-In short, the zerg.go program will do the following:
+See https://github.com/GregoryUnderscore/Mining-Automation-Miner-Stats for how to calculate miner statistics and report on
+actual/estimated profitability.
+
+In short, the zerg.go program does the following:
 1. Connect to a database defined in the configuration file, ZergPoolConfig.hcl.
 2. Automatically create the required schema.
 3. Obtain every coin from the CoingGecko REST.
