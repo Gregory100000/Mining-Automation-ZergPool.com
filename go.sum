@@ -1,9 +1,9 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220121112946-6b6fccc71312 h1:jPLmw4AZB7hdwkjnzr69MS5iK6IQ3yInEOWLbJu+5/0=
-github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220121112946-6b6fccc71312/go.mod h1:clTjH2eHnpsu5bnIN4nS2AL5lxKt6pLXqi3bwqAT+8E=
+github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220127020038-78c5d2c53caa h1:B3JdvrfQI7dxQaR+2YLGLECej3rVtbhnEl18HgWe+vs=
+github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220127020038-78c5d2c53caa/go.mod h1:clTjH2eHnpsu5bnIN4nS2AL5lxKt6pLXqi3bwqAT+8E=
 github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220121105419-02e485c66839/go.mod h1:4eX9e7jRW3gp5Z/K1Jbf4vOYuJxXYuTCt06BuSjqsfA=
-github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220121112946-6b6fccc71312 h1:2V7r+2PQHl9EC69Qsp+e7TUCjmrLDhRipBN4SLeKC6s=
-github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220121112946-6b6fccc71312/go.mod h1:4eX9e7jRW3gp5Z/K1Jbf4vOYuJxXYuTCt06BuSjqsfA=
+github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220127020038-78c5d2c53caa h1:AF4ggCUveSygZmfJkt6y2ouu+JYYcN2Z95UEiTz3KMs=
+github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220127020038-78c5d2c53caa/go.mod h1:4eX9e7jRW3gp5Z/K1Jbf4vOYuJxXYuTCt06BuSjqsfA=
 github.com/Masterminds/semver/v3 v3.1.1 h1:hLg3sBzpNErnxhQtUy/mmLR2I9foDujNK030IGemrRc=
 github.com/Masterminds/semver/v3 v3.1.1/go.mod h1:VPu/7SZ7ePZ3QOrcuXROw5FAcLl4a0cBrbBpGY/8hQs=
 github.com/agext/levenshtein v1.2.1 h1:QmvMAjj2aEICytGiWzmxoE0x2KZvE0fvmqMOfy2tjT8=
