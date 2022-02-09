@@ -1,5 +1,7 @@
 # **ZergPool Mining Stats**
 
+## See the primary mining automation program here first: https://github.com/GregoryUnderscore/Mining-Automation
+
 ### **Summary**
 Download ZergPool shared pool statistics into a PostgreSQL database. Various SQL queries can then be utilized
 to aid in mining automation or predictions.
