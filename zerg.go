@@ -236,6 +236,8 @@ func checkForOfflineMiners(tx *gorm.DB, config Config) {
 		if miner.LastCheckIn.Before(fiveMinutesAgo) {
 			subject := "Miner Offline: " + miner.Name
 			body := "Miner has been offline since " + miner.LastCheckIn.String()
+			log.Println(subject)
+			log.Println(body)
 			// If the email server is not set, nothing will be sent.
 			SendEmail(subject, body, config.EmailUser, config.EmailPassword, config.EmailServer,
 				config.EmailPort, config.EmailTo, config.EmailFrom)
