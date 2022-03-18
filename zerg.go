@@ -228,6 +228,11 @@ func checkForOfflineMiners(tx *gorm.DB, config Config) {
 	}
 	fiveMinutesAgo := time.Now().Add(-5 * time.Minute)
 	for _, miner := range miners {
+		if miner.OfflineNoticeSent { // Do not send multiple notices.
+			continue
+		}
+		// If the miner has not updated the check-in within the last 5 minutes, it is likely
+		// offline. Notify.
 		if miner.LastCheckIn.Before(fiveMinutesAgo) {
 			subject := "Miner Offline: " + miner.Name
 			body := "Miner has been offline since " + miner.LastCheckIn.String()
