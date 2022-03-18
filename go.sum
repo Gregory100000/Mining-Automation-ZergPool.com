@@ -1,11 +1,11 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220316173952-394c63fcf88d h1:ZJ2wHDLjHDpOlFP/gxN52QNgIlY2bxcY/9nUMzvXGJk=
-github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220316173952-394c63fcf88d/go.mod h1:6XKaZ0dwznPBphz9eS2GUNwv40g0BjZ7rNsljU+S0O8=
+github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220318135924-22a63992594f h1:xyALi/EgHWv19Jn6Lw009YWK0v7JHkXqvx2Z0R/B078=
+github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220318135924-22a63992594f/go.mod h1:6XKaZ0dwznPBphz9eS2GUNwv40g0BjZ7rNsljU+S0O8=
 github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220129040310-e2c78f7e8b83/go.mod h1:4eX9e7jRW3gp5Z/K1Jbf4vOYuJxXYuTCt06BuSjqsfA=
-github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220316173952-394c63fcf88d h1:CFcQ/CRF0C6cO+RzuaV9ukIMfV+OdONza5rIP7W2bFY=
-github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220316173952-394c63fcf88d/go.mod h1:4eX9e7jRW3gp5Z/K1Jbf4vOYuJxXYuTCt06BuSjqsfA=
-github.com/GregoryUnderscore/Mining-Automation-Shared/utils/email v0.0.0-20220316173952-394c63fcf88d h1:1hZEB2c/Al2lvYY7tXXrN7hkhJzC4o7GHBFjwcXdjhs=
-github.com/GregoryUnderscore/Mining-Automation-Shared/utils/email v0.0.0-20220316173952-394c63fcf88d/go.mod h1:cgzebrgi+Yeab/EHg19PYPOXaxujyb2V9kpcZtnpY08=
+github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220318135924-22a63992594f h1:61UnzsZvkQANEeZ2J2WyqzB06ePJC3bTfSza2q8vlRs=
+github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220318135924-22a63992594f/go.mod h1:4eX9e7jRW3gp5Z/K1Jbf4vOYuJxXYuTCt06BuSjqsfA=
+github.com/GregoryUnderscore/Mining-Automation-Shared/utils/email v0.0.0-20220318135924-22a63992594f h1:QK2HGwtaByWbwwQqrlw2qrLmi3Zt6Fu5Cjd8oFpsG6o=
+github.com/GregoryUnderscore/Mining-Automation-Shared/utils/email v0.0.0-20220318135924-22a63992594f/go.mod h1:cgzebrgi+Yeab/EHg19PYPOXaxujyb2V9kpcZtnpY08=
 github.com/Masterminds/semver/v3 v3.1.1 h1:hLg3sBzpNErnxhQtUy/mmLR2I9foDujNK030IGemrRc=
 github.com/Masterminds/semver/v3 v3.1.1/go.mod h1:VPu/7SZ7ePZ3QOrcuXROw5FAcLl4a0cBrbBpGY/8hQs=
 github.com/agext/levenshtein v1.2.1 h1:QmvMAjj2aEICytGiWzmxoE0x2KZvE0fvmqMOfy2tjT8=
