@@ -20,6 +20,7 @@ import (
 
 	"github.com/GregoryUnderscore/Mining-Automation-Shared/database"
 	. "github.com/GregoryUnderscore/Mining-Automation-Shared/models"
+	. "github.com/GregoryUnderscore/Mining-Automation-Shared/utils/email"
 )
 
 // ====================================
@@ -34,6 +35,14 @@ type Config struct {
 	TimeZone    string `hcl:"timezone"`    // The time zone where the program is run
 	ZergRegion  string `hcl:"zergregion"`  // This is the region prefix used in the pool URL, e.g. "na"
 	ZergBaseURL string `hcl:"zergbaseurl"` // This is the base URL for ZergPool, e.g. mine.zergpool.com.
+
+	// E-mail Server Settings (SMTP)
+	EmailServer   string `hcl:"emailServer"`
+	EmailPort     string `hcl:"emailPort"`
+	EmailUser     string `hcl:"emailUser"` // The user for login
+	EmailPassword string `hcl:"emailPassword"`
+	EmailFrom     string `hcl:"emailFrom"` // The from address
+	EmailTo       string `hcl:"emailTo"`   // The recipient
 }
 
 // ====================================
@@ -196,6 +205,9 @@ func main() {
 			log.Fatalf("Issue creating stats.\n", result.Error)
 		}
 	}
+	// Verify all miners are still online, and if not, send an e-mail alert if possible.
+	checkForOfflineMiners(tx, config)
+
 	err = tx.Commit().Error // Finalize data storage
 	if err != nil {
 		log.Fatalf("Issue committing changes.\n", result.Error)
@@ -203,7 +215,35 @@ func main() {
 	log.Println("Statistics stored.\nOperations complete.\n")
 }
 
+// Check all the miners and verify they are still online. If not, send an e-mail alert to notify that
+// the miner is offline.
+// @param tx - The active database connection
+// @param config - The HCL configuration object with all the SMTP settings.
+func checkForOfflineMiners(tx *gorm.DB, config Config) {
+	// Pull all the miners and verify the last check-in is not older than 5 minutes ago.
+	var miners []Miner
+	result := tx.Find(&miners)
+	if result.Error != nil {
+		log.Fatalf("Issue finding miner records.\n", result.Error)
+	}
+	fiveMinutesAgo := time.Now().Add(-5 * time.Minute)
+	for _, miner := range miners {
+		if miner.LastCheckIn.Before(fiveMinutesAgo) {
+			subject := "Miner Offline: " + miner.Name
+			body := "Miner has been offline since " + miner.LastCheckIn.String()
+			// If the email server is not set, nothing will be sent.
+			SendEmail(subject, body, config.EmailUser, config.EmailPassword, config.EmailServer,
+				config.EmailPort, config.EmailTo, config.EmailFrom)
+			// This will prevent additional alerts from going out. It will be
+			// reset the next time the miner changes algos, which occurs on miner start-up.
+			miner.OfflineNoticeSent = true
+			tx.Save(miner)
+		}
+	}
+}
+
 // Get pool statistics from ZergPool's REST API.
+// @param string - The URL to use for the REST query.
 func getPoolStats(url string) []ZergPoolStats {
 	var toMap interface{}              // Used to convert JSON response to map
 	zergPoolStats := []ZergPoolStats{} // All the stats are returned in this array

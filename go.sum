@@ -1,9 +1,11 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220127020536-7dbe9156f852 h1:TfKuwczjlP9BsYse+kzufUqPawQ0aPFiaRLyzpjkBbo=
-github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220127020536-7dbe9156f852/go.mod h1:clTjH2eHnpsu5bnIN4nS2AL5lxKt6pLXqi3bwqAT+8E=
-github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220121105419-02e485c66839/go.mod h1:4eX9e7jRW3gp5Z/K1Jbf4vOYuJxXYuTCt06BuSjqsfA=
-github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220127020536-7dbe9156f852 h1:Ia+Eb7ieCheiC4JBKLyUvCmHyv3OHvXOLBsQ8kZvKMA=
-github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220127020536-7dbe9156f852/go.mod h1:4eX9e7jRW3gp5Z/K1Jbf4vOYuJxXYuTCt06BuSjqsfA=
+github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220316173952-394c63fcf88d h1:ZJ2wHDLjHDpOlFP/gxN52QNgIlY2bxcY/9nUMzvXGJk=
+github.com/GregoryUnderscore/Mining-Automation-Shared/database v0.0.0-20220316173952-394c63fcf88d/go.mod h1:6XKaZ0dwznPBphz9eS2GUNwv40g0BjZ7rNsljU+S0O8=
+github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220129040310-e2c78f7e8b83/go.mod h1:4eX9e7jRW3gp5Z/K1Jbf4vOYuJxXYuTCt06BuSjqsfA=
+github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220316173952-394c63fcf88d h1:CFcQ/CRF0C6cO+RzuaV9ukIMfV+OdONza5rIP7W2bFY=
+github.com/GregoryUnderscore/Mining-Automation-Shared/models v0.0.0-20220316173952-394c63fcf88d/go.mod h1:4eX9e7jRW3gp5Z/K1Jbf4vOYuJxXYuTCt06BuSjqsfA=
+github.com/GregoryUnderscore/Mining-Automation-Shared/utils/email v0.0.0-20220316173952-394c63fcf88d h1:1hZEB2c/Al2lvYY7tXXrN7hkhJzC4o7GHBFjwcXdjhs=
+github.com/GregoryUnderscore/Mining-Automation-Shared/utils/email v0.0.0-20220316173952-394c63fcf88d/go.mod h1:cgzebrgi+Yeab/EHg19PYPOXaxujyb2V9kpcZtnpY08=
 github.com/Masterminds/semver/v3 v3.1.1 h1:hLg3sBzpNErnxhQtUy/mmLR2I9foDujNK030IGemrRc=
 github.com/Masterminds/semver/v3 v3.1.1/go.mod h1:VPu/7SZ7ePZ3QOrcuXROw5FAcLl4a0cBrbBpGY/8hQs=
 github.com/agext/levenshtein v1.2.1 h1:QmvMAjj2aEICytGiWzmxoE0x2KZvE0fvmqMOfy2tjT8=
